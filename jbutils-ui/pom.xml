@@ -68,7 +68,7 @@
 		<!-- Backend implementation -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>jbcity-courses-backend</artifactId>
+			<artifactId>jbutils-backend</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
