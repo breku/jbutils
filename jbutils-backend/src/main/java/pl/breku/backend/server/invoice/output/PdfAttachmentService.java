@@ -3,8 +3,6 @@ package pl.breku.backend.server.invoice.output;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPTable;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.breku.backend.server.invoice.input.FastInvoceException;
 import pl.breku.backend.server.invoice.input.model.InvoiceDetails;
@@ -18,7 +16,6 @@ import java.util.List;
 @Service
 @Slf4j
 public class PdfAttachmentService extends AbstractPdfService {
-
 
 
 	public void createAttachments(List<InvoiceDetails> invoiceDetailsList, UserDetails userDetails) {

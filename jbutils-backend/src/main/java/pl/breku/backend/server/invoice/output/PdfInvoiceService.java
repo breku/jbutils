@@ -3,18 +3,13 @@ package pl.breku.backend.server.invoice.output;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.LocalDate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.breku.backend.server.invoice.input.FastInvoceException;
 import pl.breku.backend.server.invoice.input.model.InvoiceDetails;
 import pl.breku.backend.server.invoice.input.model.UserDetails;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.List;
 
 /**
@@ -23,7 +18,6 @@ import java.util.List;
 @Service
 @Slf4j
 public class PdfInvoiceService extends AbstractPdfService {
-
 
 
 	private static final double VAT_FACTOR = 0.23;

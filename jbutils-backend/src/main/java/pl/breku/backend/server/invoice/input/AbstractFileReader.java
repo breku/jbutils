@@ -3,8 +3,6 @@ package pl.breku.backend.server.invoice.input;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.StringReader;

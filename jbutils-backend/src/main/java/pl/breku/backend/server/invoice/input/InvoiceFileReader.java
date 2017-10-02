@@ -4,8 +4,6 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import pl.breku.backend.server.invoice.input.model.InvoiceDetails;
 
@@ -48,7 +46,7 @@ public class InvoiceFileReader {
 
 	private List<String> getMailAsLines(String mailContent) {
 		final List<String> fileAsString = Splitter.on("\n").splitToList(mailContent);
-		if(fileAsString.size() <=1 ){
+		if (fileAsString.size() <= 1) {
 			throw new IllegalStateException("Cannot parse mail on new line characters");
 		}
 		final int invoiceListIndex = getInvoiceListIndex(fileAsString);
