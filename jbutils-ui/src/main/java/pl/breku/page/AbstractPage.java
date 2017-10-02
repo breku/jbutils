@@ -2,6 +2,7 @@ package pl.breku.page;
 
 import com.vaadin.navigator.View;
 import com.vaadin.spring.navigator.SpringNavigator;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.VerticalLayout;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.breku.menu.MenuNavigationBar;
@@ -33,6 +34,13 @@ public abstract class AbstractPage extends VerticalLayout implements View {
 
 	protected abstract void createComponent(VerticalLayout wrapper);
 
+	protected Component createDashboardImage() {
+		final VerticalLayout result = new VerticalLayout();
+		result.addStyleName("jb-dashboard-image");
+		result.setSpacing(false);
+		result.setSizeFull();
+		return result;
+	}
 
 	protected VerticalLayout createWrapper() {
 		VerticalLayout verticalLayout = new VerticalLayout();

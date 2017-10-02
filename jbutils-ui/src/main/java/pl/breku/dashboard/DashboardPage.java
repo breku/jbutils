@@ -28,13 +28,7 @@ public class DashboardPage extends AbstractPage {
 		wrapper.addComponent(new Label("This is home page"));
 	}
 
-	private Component createDashboardImage() {
-		final VerticalLayout result = new VerticalLayout();
-		result.addStyleName("jb-dashboard-image");
-		result.setSpacing(false);
-		result.setSizeFull();
-		return result;
-	}
+
 
 
 }
