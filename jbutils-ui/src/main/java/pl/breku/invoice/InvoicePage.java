@@ -1,17 +1,19 @@
 package pl.breku.invoice;
 
 import com.vaadin.server.FileDownloader;
+import com.vaadin.server.StreamResource;
 import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextArea;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.breku.backend.server.invoice.InvoiceService;
 import pl.breku.backend.server.invoice.input.model.web.MailServerModel;
 import pl.breku.backend.server.invoice.output.ZipFileService;
 import pl.breku.page.AbstractPage;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 /**
  * Created by breku on 13.09.17.
@@ -55,6 +57,8 @@ public class InvoicePage extends AbstractPage {
 		return verticalLayout;
 	}
 
+
+
 	private VerticalLayout createButton() {
 		VerticalLayout verticalLayout = new VerticalLayout();
 		button = new Button("Generate invoices");
@@ -63,11 +67,18 @@ public class InvoicePage extends AbstractPage {
 			MailServerModel mailServerModel = new MailServerModel(textArea.getValue());
 			invoiceService.clearInvoiceDirectory();
 			invoiceService.createInvoicesAndAttachments(mailServerModel);
-			final byte[] zips = zipFileService.getZips();
 
 		});
+		FileDownloader fileDownloader = new FileDownloader(getPDFStream());
+		fileDownloader.extend(button);
+
 		verticalLayout.addComponent(button);
 		verticalLayout.setSpacing(true);
 		return verticalLayout;
+	}
+
+	private StreamResource getPDFStream() {
+		StreamResource.StreamSource source = (StreamResource.StreamSource) () -> new ByteArrayInputStream(zipFileService.getZips());
+		return new StreamResource ( source, "invoices.zip");
 	}
 }
