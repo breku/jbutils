@@ -1,4 +1,4 @@
-package pl.breku;
+package pl.breku.ui;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -13,7 +13,10 @@ import com.vaadin.spring.server.SpringVaadinServletRequest;
 import com.vaadin.ui.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import pl.breku.Person;
 import pl.breku.backend.CrudService;
+import pl.breku.backend.server.config.JbUtilsConfiguration;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -24,6 +27,7 @@ import javax.servlet.annotation.WebServlet;
 @SpringUI
 @Theme("mytheme")
 @Slf4j
+@Component
 public class MyUI extends UI {
 
 	@Autowired
@@ -69,8 +73,6 @@ public class MyUI extends UI {
 		grid.setDataProvider(dataProvider);
 		grid.setSizeFull();
 
-		// This is a component from the jbcity-courses-addon module
-		//layout.addComponent(new MyComponent());
 		layout.addComponents(name, button, grid);
 		layout.setSizeFull();
 		layout.setExpandRatio(grid, 1.0f);
@@ -78,8 +80,5 @@ public class MyUI extends UI {
 		setContent(layout);
 	}
 
-	@WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-	@VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
-	public static class MyUIServlet extends VaadinServlet {
-	}
+
 }

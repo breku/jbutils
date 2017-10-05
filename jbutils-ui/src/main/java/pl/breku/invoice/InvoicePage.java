@@ -67,6 +67,8 @@ public class InvoicePage extends AbstractPage {
 			MailServerModel mailServerModel = new MailServerModel(textArea.getValue());
 			invoiceService.clearInvoiceDirectory();
 			invoiceService.createInvoicesAndAttachments(mailServerModel);
+			log.info("< Creating pdfs finished.");
+
 
 		});
 		FileDownloader fileDownloader = new FileDownloader(getPDFStream());

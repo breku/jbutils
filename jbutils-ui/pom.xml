@@ -50,6 +50,15 @@
 
 
 
+
+		<!-- marked the embedded servlet container as provided -->
+		<!-- If project has this dependency it's unable to start with spring boot run-->
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+			<!--<scope>provided</scope>-->
+		<!--</dependency>-->
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>com.vaadin</groupId>
@@ -83,6 +92,7 @@
 
 	<build>
 
+		<finalName>jbutils</finalName>
 		<plugins>
 
 			<plugin>
