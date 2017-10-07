@@ -3,8 +3,8 @@ package pl.breku.menu;
 import com.vaadin.spring.navigator.SpringNavigator;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.VerticalLayout;
-import pl.breku.invoice.InvoicePage;
 import pl.breku.dashboard.DashboardPage;
+import pl.breku.invoice.InvoicePage;
 
 /**
  * Created by breku on 13.09.17.

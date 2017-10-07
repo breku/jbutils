@@ -2,7 +2,8 @@ package pl.breku.dashboard;
 
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.VerticalLayout;
 import pl.breku.page.AbstractPage;
 
 /**
@@ -27,8 +28,6 @@ public class DashboardPage extends AbstractPage {
 		wrapper.addComponent(createDashboardImage());
 		wrapper.addComponent(new Label("This is home page"));
 	}
-
-
 
 
 }

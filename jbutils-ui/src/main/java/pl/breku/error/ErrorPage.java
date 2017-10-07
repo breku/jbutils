@@ -3,6 +3,7 @@ package pl.breku.error;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
+import org.springframework.context.annotation.Scope;
 import pl.breku.page.AbstractPage;
 
 import static pl.breku.error.ErrorPage.VIEW_NAME;
@@ -10,6 +11,7 @@ import static pl.breku.error.ErrorPage.VIEW_NAME;
 /**
  * Created by breku on 14.09.17.
  */
+@Scope("prototype")
 @SpringView(name = VIEW_NAME)
 public class ErrorPage extends AbstractPage {
 
