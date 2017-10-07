@@ -5,6 +5,7 @@ import com.vaadin.server.StreamResource;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.breku.backend.server.invoice.InvoiceService;
 import pl.breku.backend.server.invoice.input.model.web.MailServerModel;
@@ -63,11 +64,15 @@ public class InvoicePage extends AbstractPage {
 		VerticalLayout verticalLayout = new VerticalLayout();
 		button = new Button("Generate invoices");
 		button.addClickListener((Button.ClickListener) event -> {
-			log.info("> Creating pdfs");
-			MailServerModel mailServerModel = new MailServerModel(textArea.getValue());
-			invoiceService.clearInvoiceDirectory();
-			invoiceService.createInvoicesAndAttachments(mailServerModel);
-			log.info("< Creating pdfs finished.");
+			if(StringUtils.isNotBlank(textArea.getValue())){
+				log.info("> Creating pdfs");
+				MailServerModel mailServerModel = new MailServerModel(textArea.getValue());
+				invoiceService.clearInvoiceDirectory();
+				invoiceService.createInvoicesAndAttachments(mailServerModel);
+				log.info("< Creating pdfs finished.");
+			}else {
+				log.info("Skip creating pdfs due to empty textArea");
+			}
 
 
 		});
